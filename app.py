@@ -75,9 +75,14 @@ if "model_output" not in st.session_state:
     st.session_state.model_output = ""   # 用来保存最近一次模型回复
 
 # ========= 背景切换按钮（不会清空内容） =========
-# 放在侧边栏也行：st.sidebar.button(...)
-if st.button("换PPT"):
-    st.session_state.bg_image = pick_random_bg()
+col1, col2, col3 = st.columns([1,1,12])
+with col1:
+    if st.button("换背景"):
+        st.session_state.bg_image = pick_random_bg()
+
+with col2:
+    if st.button("清空背景"):
+        st.session_state.bg_image = "image17.jpg"
 
 # ========= 注入背景 CSS =========
 img_base64 = get_base64_image(st.session_state.bg_image)
