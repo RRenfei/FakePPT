@@ -125,7 +125,7 @@ if st.button("生成回复"):
             )
 
             response = client.chat.completions.create(
-                model="deepseek-chat",
+                model="deepseek-reasoner",
                 messages=[{"role": "user", "content": text}],
                 stream=False
             )
